@@ -14,7 +14,7 @@ so I made this really simple thing here
 
 added this separeted theme.css so you can modify it without having to open this giant thing that blob.css to
 
-made this run.sh file (for the flatpak linux version) to autostart the ui server and set stremio to use it
+made this run.sh file (for the flatpak linux version) to autostart the ui server and stremio and set it to use it
 
 the only major problem on it is that you gotta actually close stremio to fully close it. if you just end the script the python server just keeps running. i have no bash knowledge so whatever who cares
 
