@@ -21,4 +21,5 @@ the only major problem on it is that you gotta actually close stremio to fully c
 i also included the theme i am making. it's not finished, so it has some problems (specially on stremio's internal browser, on firefox it was fine), but i think it looks nice
 
 All credits to the creators of [Stremio](https://github.com/Stremio), this is obviously not affiliated with them
+
 I have no idea of what license put in something that's not mine
