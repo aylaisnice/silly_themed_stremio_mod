@@ -11,16 +11,21 @@ body,
 #board .board-headline,
 h2,
 #detail .holder .actionButtons .button-b .icon {
-  font-family: 'Inter' !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
 body {
-  scrollbar-color: rgba(255, 255, 255, 0.7) var(--fgc);
+  scrollbar-color: rgba(255, 255, 255, 0.5) var(--fgc);
 }
 
-::-webkit-scrollbar {
-  background-color: var(--fgc) !important;
-  color: rgba(255, 255, 255, 0.7) !important;
+::-webkit-scrollbar-track  {
+  background: var(--fgc);
+  border-radius: var(--br);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--br);
 }
 
 /*#board .board-container-wrapper {
@@ -64,12 +69,23 @@ body {
   outline: none !important;
 }
 
+#board .notif .thumb img,
+#board .board-item .thumb img,
+#board .recent-board .resume .thumb > img,
+#library .items .ng-scope .thumb > img,
+#discover .holder .item .thumb > img {
+  transition: 0.1s;
+  /*outline: 2px solid #fff0;*/
+  box-shadow: 0px 0px 0 2px #fff0;
+}
+
 #board .notif:hover .thumb img,
 #board .board-item:hover .thumb img,
 #board .recent-board .resume:hover .thumb > img,
 #library .items .ng-scope:hover .thumb > img,
 #discover .holder .item:hover .thumb > img {
-  outline: 2px solid white;
+  /*outline: 2px solid white;*/
+  box-shadow: 0px 0px 0 2px white;
 }
 
 #board .notif:focus .thumb img,
@@ -77,7 +93,8 @@ body {
 #board .recent-board .resume:focus .thumb > img,
 #library .items .ng-scope:focus .thumb > img,
 #discover .holder .item:focus .thumb > img {
-  outline: 3px solid white;
+  /*outline: 3px solid white;*/
+  box-shadow: 0px 0px 0 3px white;
 }
 
 @media all {
@@ -167,12 +184,30 @@ body {
 body #search-bar input {
   background-color: var(--fgc);
   border-radius: var(--br);
-  color: white;
+  color: white !important;
   box-shadow: 0px 0px 5px var(--fgc);
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.6;
+}
+
+/* i don't like that it shows my email lol*/
+#window-controls #user-panel .user-info .email-container .email {
+  display: none;
+}
+
+#window-controls:not(.player) #user-panel .section .option {
+  transition: 0.1s;
 }
 
 #window-controls:not(.player) #user-panel .section .option:hover {
   background-color: var(--soc);
+}
+
+#window-controls:not(.player) #user-panel .section .option .icon {
+  color: white;
 }
 
 #window-controls:not(.player) #user-panel {
@@ -181,10 +216,6 @@ body #search-bar input {
   left: var(--nw);
   bottom: 0px;
   z-index: 1;
-}
-
-#window-controls:not(.player) #user-panel .section .option .icon {
-  color: white;
 }
 
 html,
@@ -261,6 +292,7 @@ body #search-bar {
 
 body #search-bar .icon-ic_x {
   left: calc(var(--nw) + 290px);
+  top: 19px;
   visibility: hidden;
 }
 
