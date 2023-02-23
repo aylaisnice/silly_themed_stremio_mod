@@ -10,7 +10,9 @@
 body,
 #board .board-headline,
 h2,
-#detail .holder .actionButtons .button-b .icon {
+#detail .holder .actionButtons .button-b .icon,
+#detail .details .title,
+#detail .details-movie .title {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
@@ -18,7 +20,7 @@ body {
   scrollbar-color: rgba(255, 255, 255, 0.5) var(--fgc);
 }
 
-::-webkit-scrollbar-track  {
+::-webkit-scrollbar-track {
   background: var(--fgc);
   border-radius: var(--br);
 }
@@ -57,14 +59,16 @@ body {
 #library .items li,
 #library .items .ng-scope .thumb,
 #discover .holder .items li,
-#discover .filter .type li:focus,
-#discover .filter .sort li:focus,
-#library .lib-type li:focus,
 #discover .genre-select li,
 .info-box .overlay,
 #detail .holder .actionButtons .button-b,
+/*don't know if i should it for them or if it loses too much functionality*/
+#discover .filter .type li:focus,
+#discover .filter .sort li:focus,
+#library .lib-type li:focus,
 #calendar li:focus,
-#calendar #future-episodes .episode:focus {
+#calendar #future-episodes .episode:focus,
+.sidebar .episodes-list li:not(.ads):focus {
   border: none;
   outline: none !important;
 }
@@ -75,8 +79,9 @@ body {
 #library .items .ng-scope .thumb > img,
 #discover .holder .item .thumb > img {
   transition: 0.1s;
+  /*stremio's browser doesn't supports curved outlines :(
   /*outline: 2px solid #fff0;*/
-  box-shadow: 0px 0px 0 2px #fff0;
+  box-shadow: 0 0 0 2px #fff0;
 }
 
 #board .notif:hover .thumb img,
@@ -85,7 +90,7 @@ body {
 #library .items .ng-scope:hover .thumb > img,
 #discover .holder .item:hover .thumb > img {
   /*outline: 2px solid white;*/
-  box-shadow: 0px 0px 0 2px white;
+  box-shadow: 0 0 0 2px white;
 }
 
 #board .notif:focus .thumb img,
@@ -94,7 +99,7 @@ body {
 #library .items .ng-scope:focus .thumb > img,
 #discover .holder .item:focus .thumb > img {
   /*outline: 3px solid white;*/
-  box-shadow: 0px 0px 0 3px white;
+  box-shadow: 0 0 0 3px white;
 }
 
 @media all {
@@ -149,10 +154,73 @@ body {
 .thumb img,
 .info-box,
 #detail .holder .actionButtons .button-b,
-.streams-holder {
+.streams-holder,
+.sidebar .episodes-list li,
+.sidebar .season-chooser li,
+li {
   border-radius: var(--br);
 }
 
+/*
+/* who uses it? screen space waster
+#detail .holder .share {
+  display: none;
+}
+
+#detail .details,
+#detail .details-movie,
+#detail .details .title,
+#detail .details-movie .title,
+#detail .details-bottom ul li {
+  font-size: 16px;
+}
+
+#detail .details-bottom {
+  margin-bottom: 0;
+}
+
+#detail .details-bottom .title {
+  line-height: 1;
+}
+
+#detail .details-bottom .title:after {
+  content: ':';
+}
+
+#detail .details-bottom .title-content:not(.genre) {
+  line-height: 1;
+  position: relative;
+  bottom: 16px;
+  margin-left: 80px;
+}
+
+#detail .details-bottom div {
+  height: 16px;
+}
+
+#detail .details-bottom .genre, #detail .details-bottom > ul {
+  position: relative;
+  bottom: 200px
+}
+
+#detail .details-bottom .title-content.genre {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+#detail .details-bottom .title-content.genre a:after {
+  opacity: 0.8;
+}
+
+.details-more {
+  display: none;
+}
+
+.details-more-info {
+    bottom: 100px;
+    opacity: 1;
+}
+*/
 #discover .filter .type li.selected,
 #discover .filter .sort li.selected,
 #library .lib-type li.selected,
@@ -185,7 +253,7 @@ body #search-bar input {
   background-color: var(--fgc);
   border-radius: var(--br);
   color: white !important;
-  box-shadow: 0px 0px 5px var(--fgc);
+  box-shadow: 0 0 5px var(--fgc);
 }
 
 ::placeholder {
@@ -214,7 +282,7 @@ body #search-bar input {
   width: 250px;
   position: fixed;
   left: var(--nw);
-  bottom: 0px;
+  bottom: 0;
   z-index: 1;
 }
 
@@ -252,7 +320,7 @@ html,
 #body {
   width: calc(100vw - var(--nw));
   left: var(--nw);
-  top: 0px;
+  top: 0;
 }
 
 #window-controls:not(.player) li .icon,
