@@ -1,0 +1,402 @@
+:root {
+  --nw: 100px;
+  --nis: 50px;
+  --bgc: black;
+  --fgc: #090909;
+  --soc: #8a5aab;
+  --br: 0.3em;
+}
+
+body,
+#board .board-headline,
+h2,
+#detail .holder .actionButtons .button-b .icon {
+  font-family: 'Inter' !important;
+}
+
+body {
+  scrollbar-color: rgba(255, 255, 255, 0.7) var(--fgc);
+}
+
+::-webkit-scrollbar {
+  background-color: var(--fgc) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/*#board .board-container-wrapper {
+    padding-top: calc(50vh - 125px);
+}*/
+#board .board-container-wrapper,
+#discover .holder {
+  top: 0;
+  bottom: 0;
+}
+
+.settings-container .sections {
+  background-color: var(--bgc);
+}
+
+#board .board-headline {
+  color: white !important;
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 1;
+}
+
+#board .board-notif li .thumb,
+#board li.board-item .thumb,
+#board .board-notif li .placeholder,
+#board li.board-item .placeholder,
+.items .thumb,
+#board .recent-board .resume,
+#library .items li,
+#library .items .ng-scope .thumb,
+#discover .holder .items li,
+#discover .filter .type li:focus,
+#discover .filter .sort li:focus,
+#library .lib-type li:focus,
+#discover .genre-select li,
+.info-box .overlay,
+#detail .holder .actionButtons .button-b,
+#calendar li:focus,
+#calendar #future-episodes .episode:focus {
+  border: none;
+  outline: none !important;
+}
+
+#board .notif:hover .thumb img,
+#board .board-item:hover .thumb img,
+#board .recent-board .resume:hover .thumb > img,
+#library .items .ng-scope:hover .thumb > img,
+#discover .holder .item:hover .thumb > img {
+  outline: 2px solid white;
+}
+
+#board .notif:focus .thumb img,
+#board .board-item:focus .thumb img,
+#board .recent-board .resume:focus .thumb > img,
+#library .items .ng-scope:focus .thumb > img,
+#discover .holder .item:focus .thumb > img {
+  outline: 3px solid white;
+}
+
+@media all {
+  #board .recent-board li {
+    width: 19% !important;
+    margin: 0.7%;
+  }
+}
+@media (min-width: 800px) {
+  #board .recent-board li {
+    width: 18.66% !important;
+  }
+}
+@media (min-width: 900px) {
+  #board .recent-board li {
+    width: 15.66% !important;
+  }
+}
+@media (min-width: 1200px) {
+  #board .recent-board li {
+    width: 13.28% !important;
+  }
+}
+
+.items.recent-board li,
+#library .items li,
+#discover .holder .items li {
+  overflow: visible;
+}
+
+#board .board-item .info {
+  display: none;
+}
+
+#board .notif .thumb,
+#board .board-item .thumb {
+  height: 100%;
+}
+
+.items li::before {
+  padding-top: 146.4% !important;
+}
+
+.items {
+  scrollbar-width: none;
+}
+
+.items::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb img,
+.info-box,
+#detail .holder .actionButtons .button-b,
+.streams-holder {
+  border-radius: var(--br);
+}
+
+#discover .filter .type li.selected,
+#discover .filter .sort li.selected,
+#library .lib-type li.selected,
+#discover .genre-select li.selected,
+#series-calendar .selectMonth ul li.current {
+  background-color: #0000;
+  font-weight: bold;
+}
+
+#series-calendar {
+  font-weight: normal;
+}
+
+#discover .filter .type li,
+#discover .filter .sort li,
+#discover .genre-select li {
+  color: white;
+}
+
+#discover .filter .type li:hover,
+#discover .filter .sort li:hover,
+#discover .genre-select li:hover,
+#library .lib-type li:hover,
+#library .sort-filter li:hover {
+  background-color: #0000;
+}
+
+#window-controls:not(.player) #user-panel,
+body #search-bar input {
+  background-color: var(--fgc);
+  border-radius: var(--br);
+  color: white;
+  box-shadow: 0px 0px 5px var(--fgc);
+}
+
+#window-controls:not(.player) #user-panel .section .option:hover {
+  background-color: var(--soc);
+}
+
+#window-controls:not(.player) #user-panel {
+  width: 250px;
+  position: fixed;
+  left: var(--nw);
+  bottom: 0px;
+  z-index: 1;
+}
+
+#window-controls:not(.player) #user-panel .section .option .icon {
+  color: white;
+}
+
+html,
+#body {
+  background: var(--bgc) !important;
+}
+
+#header {
+  height: 100vh !important;
+  width: var(--nw) !important;
+  background: #0000 !important;
+  padding-top: calc(50vh - var(--nis) * 3);
+}
+
+#window-controls:not(.player) {
+  position: fixed;
+  left: 0;
+  top: unset !important;
+  bottom: calc(var(--nis) / 2) !important;
+  width: 20px;
+}
+
+#header::before {
+  content: '';
+  background: url(theme_img/stremio.png);
+  width: var(--nis);
+  height: var(--nis);
+  position: absolute;
+  background-size: var(--nis);
+  left: calc((var(--nw) - var(--nis)) / 2);
+  top: calc((var(--nw) - var(--nis)) / 2);
+}
+
+#body {
+  width: calc(100vw - var(--nw));
+  left: var(--nw);
+  top: 0px;
+}
+
+#window-controls:not(.player) li .icon,
+body #header .tab .icon {
+  text-align: center;
+  margin: 0 !important;
+  padding-block: calc(var(--nis) / 3);
+  width: var(--nw) !important;
+  height: calc(var(--nis) / 3);
+}
+
+body #header .tab {
+  text-align: center;
+}
+
+body #header .tab .icon,
+#window-controls:not(.player) li .icon,
+#window-controls:not(.player) .user-menu .icon-ic_more,
+body #search-bar button {
+  font-size: 18px !important;
+  line-height: 1 !important;
+  transition: 0.3s;
+}
+
+body #header .tab {
+  width: var(--nw) !important;
+  height: var(--nis) !important;
+}
+
+body #search-bar {
+  top: calc(50vh + var(--nw) / 2);
+  left: 0;
+  height: var(--nis);
+  width: var(--nw);
+  background-color: #0000;
+}
+
+body #search-bar .icon-ic_x {
+  left: calc(var(--nw) + 290px);
+  visibility: hidden;
+}
+
+body #search-bar button {
+  right: unset !important;
+  width: var(--nw);
+  background-color: #0000;
+}
+
+body #search-bar input {
+  right: 0;
+  left: var(--nw);
+  visibility: hidden;
+  transition: 0.1s;
+  opacity: 0;
+  width: 300px;
+}
+
+body #search-bar:hover input {
+  opacity: 1;
+  visibility: visible;
+}
+
+body #search-bar:hover .icon-ic_x {
+  visibility: visible;
+}
+
+body #header .tab .icon.icon-ic_back_ios {
+  height: 36px !important;
+  padding-block: calc((var(--nis) - 36px) / 2 + var(--nis) * 2);
+  font-size: 36px !important;
+}
+
+.tab .ng-scope.ng-binding,
+.addons-handle,
+.board-row-icon.icon {
+  display: none;
+}
+
+body #header .tab,
+#window-controls:not(.player) li {
+  background-color: #0000 !important;
+}
+
+body #header .tab .notif,
+body .player-handle .tab .notif,
+body .addons-handle .tab .notif {
+  background-color: #0000;
+  opacity: 1 !important;
+  border-radius: 0;
+  padding-inline: 0;
+}
+
+body #header .tab.selected .icon,
+#window-controls:not(.player) li.selected .icon,
+#discover .filter .type li.selected,
+#discover .filter .sort li.selected,
+#discover .genre-select li.selected,
+#library .lib-type li.selected,
+#library .sort-filter li.selected {
+  opacity: 1 !important;
+}
+
+body #header .tab .icon:hover,
+#window-controls:not(.player) li .icon:hover,
+body #search-bar:hover button,
+#discover .filter .type li:hover,
+#discover .filter .sort li:hover,
+#discover .genre-select li:hover,
+#library .lib-type li:hover,
+#library .sort-filter li:hover {
+  opacity: 0.8 !important;
+}
+
+body #header .tab .icon,
+#window-controls:not(.player) li .icon,
+body #search-bar button,
+#discover .filter .type li,
+#discover .filter .sort li,
+#discover .genre-select li,
+#library .lib-type li,
+#library .sort-filter li {
+  opacity: 0.6;
+}
+
+#detail .sidebar {
+  top: 0;
+  right: var(--nw);
+}
+
+.sidebar .episodes {
+  width: 300px;
+}
+
+#detail .cover,
+#detail .cover-overlay,
+#detail .loader {
+  position: fixed;
+  left: 0;
+}
+
+#detail .details-less-info {
+  top: 0;
+}
+
+#board .board-row {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#board .carousel-right {
+  background: linear-gradient(to right, #0000 0%, var(--bgc) 70%, var(--bgc) 100%);
+}
+
+#board .carousel-left {
+  background: linear-gradient(to right, var(--bgc) 0%, var(--bgc) 30%, #07070700 100%);
+}
+
+#board .arrow-center {
+  top: calc(50% - 32px);
+}
+
+body #header .tab {
+  padding: 0 !important;
+}
+
+body .player-handle .tab .icon {
+  right: 100px !important;
+}
+
+.items .notification {
+  background: white;
+  color: black;
+  border-radius: 0 0 var(--br) var(--br);
+}
+
+.items .notification .ng-scope.ng-binding {
+  color: black;
+}

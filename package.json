@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "angular": "^1.8.3",
+    "angular-ui-router": "^1.0.30",
+    "bootstrap": "^5.2.3",
+    "popper.js": "^1.16.1",
+    "toastr": "^2.1.4",
+    "work": "^0.10.0"
+  }
+}
