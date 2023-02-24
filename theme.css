@@ -274,7 +274,11 @@ li,
   line-height: 1;
   position: relative;
   bottom: 16px;
-  margin-left: 90px; /*80px is better for portuguese, 90px for english. css knows no language*/
+  margin-left: 53px; /*in portuguese this is easier*/
+}
+
+#detail .details-movie .director {
+  margin-left: 37px;
 }
 
 #detail .details-bottom div:not(.genre) {
