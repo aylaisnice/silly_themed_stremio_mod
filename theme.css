@@ -22,7 +22,7 @@ h2,
 }
 
 body {
-  scrollbar-color: rgba(255, 255, 255, 0.5) var(--fgc);
+  scrollbar-color: rgba(255, 255, 255, 0.3) var(--fgc);
 }
 
 ::-webkit-scrollbar-track {
@@ -31,8 +31,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: var(--br);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
 }
 
 /*#board .board-container-wrapper {
@@ -72,7 +76,10 @@ body {
 .info-box .overlay,
 #detail .holder .actionButtons .button-b,
 #discover .filter .type li:focus,
-#discover .filter .sort li:focus {
+#discover .filter .sort li:focus,
+#addonsCatalog .filter .type li:focus,
+#addonsCatalog .filter .sort li:focus,
+.settings-container .sections a:focus {
   border: none;
   outline: none !important;
 }
@@ -167,16 +174,12 @@ body {
   height: 100%;
 }
 
-.items li::before {
+.items li:before {
   padding-top: 146.4% !important;
 }
 
 .items {
   scrollbar-width: none;
-}
-
-.items::-webkit-scrollbar {
-  display: none;
 }
 
 .thumb img,
@@ -186,7 +189,9 @@ body {
 .sidebar .episodes-list li,
 .sidebar .season-chooser li,
 li,
-#detail .addons-catalogue-link a {
+#detail .addons-catalogue-link a,
+.button-b,
+.button-s {
   border-radius: var(--br);
 }
 
@@ -320,7 +325,9 @@ li,
 #discover .filter .sort li.selected,
 #library .lib-type li.selected,
 #discover .genre-select li.selected,
-#series-calendar .selectMonth ul li.current {
+#series-calendar .selectMonth ul li.current,
+#addonsCatalog .filter .type li.selected,
+.settings-container .sections a.active {
   background-color: #0000;
   font-weight: bold;
 }
@@ -339,8 +346,13 @@ li,
 #discover .filter .sort li:hover,
 #discover .genre-select li:hover,
 #library .lib-type li:hover,
-#library .sort-filter li:hover {
+#library .sort-filter li:hover,
+#addonsCatalog .filter .type li:hover {
   background-color: #0000;
+}
+
+#addonsCatalog .filter .type + .type {
+  overflow-x: hidden;
 }
 
 #discover-filter::-webkit-scrollbar {
@@ -513,14 +525,17 @@ body .addons-handle .tab .notif {
   padding-inline: 0;
 }
 
-body #header .tab.selected .icon,
-#window-controls:not(.player) li.selected .icon,
-#discover .filter .type li.selected,
-#discover .filter .sort li.selected,
-#discover .genre-select li.selected,
-#library .lib-type li.selected,
-#library .sort-filter li.selected {
-  opacity: 1 !important;
+body #header .tab .icon,
+#window-controls:not(.player) li .icon,
+body #search-bar button,
+#discover .filter .type li,
+#discover .filter .sort li,
+#discover .genre-select li,
+#library .lib-type li,
+#library .sort-filter li,
+#addonsCatalog .filter .type li,
+.settings-container .sections a {
+  opacity: 0.6;
 }
 
 body #header .tab .icon:hover,
@@ -531,6 +546,8 @@ body #search-bar:hover button,
 #discover .genre-select li:hover,
 #library .lib-type li:hover,
 #library .sort-filter li:hover,
+#addonsCatalog .filter .type li:hover,
+.settings-container .sections a:hover,
 body #header .tab .icon:focus,
 #window-controls:not(.player) li .icon:focus,
 body #search-bar:focus button,
@@ -538,19 +555,22 @@ body #search-bar:focus button,
 #discover .filter .sort li:focus,
 #discover .genre-select li:focus,
 #library .lib-type li:focus,
-#library .sort-filter li:focus {
+#library .sort-filter li:focus,
+#addonsCatalog .filter .type li:focus,
+.settings-container .sections a:focus {
   opacity: 0.8 !important;
 }
 
-body #header .tab .icon,
-#window-controls:not(.player) li .icon,
-body #search-bar button,
-#discover .filter .type li,
-#discover .filter .sort li,
-#discover .genre-select li,
-#library .lib-type li,
-#library .sort-filter li {
-  opacity: 0.6;
+body #header .tab.selected .icon,
+#window-controls:not(.player) li.selected .icon,
+#discover .filter .type li.selected,
+#discover .filter .sort li.selected,
+#discover .genre-select li.selected,
+#library .lib-type li.selected,
+#library .sort-filter li.selected,
+#addonsCatalog .filter .type li.selected,
+.settings-container .sections a.active {
+  opacity: 1 !important;
 }
 
 #board .board-row {
