@@ -1,15 +1,53 @@
 :root {
   --nw: 100px;
   --nis: 50px;
-  --bgc: black;
-  --fgc: #090909;
-  --soc: #8a5aab;
+  --bgc: #121212; /*if you want pure black edit here*/
+  --fgc: #1e1e1e;
   --br: 0.3em;
+  --tc: white;
+  --he: 0.87;
+  --me: 0.6;
+  --le: 0.38;
+
+  --co: #8a5aab;
+
+  --cb: #301733;
+
+  --c9: #4b1c7a;
+  --c8: #672588;
+  --c7: #762a91;
+  --c6: #88309a;
+  --c5: #9534a0;
+  --c4: #a44eae;
+  --c3: #b46cbc;
+  --c2: #ca95d0;
+  --c1: #dfbfe2;
+  --c0: #f2e5f3;
+
+  --00dp: #121212;
+  --01dp: #1e1e1e;
+  --02dp: #222222;
+  --03dp: #252525;
+  --04dp: #272727;
+  --05dp: #2c2c2c;
+  --06dp: #2e2e2e;
+  --08dp: #2d2d2d;
+  --12dp: #323232;
+  --16dp: #353535;
+  --24dp: #383838;
 }
 
 /*i'm disabling the toasts because of that annoying error that appears every time you play something here, it's annoying*/
 #toast-container {
   display: none;
+}
+
+html {
+  background: var(--bgc) !important;
+}
+
+#body {
+  background: #0000;
 }
 
 body,
@@ -18,7 +56,7 @@ h2,
 #detail .holder .actionButtons .button-b .icon,
 #detail .details .title,
 #detail .details-movie .title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif !important;
 }
 
 body {
@@ -57,10 +95,10 @@ body {
 }
 
 #board .board-headline {
-  color: white !important;
+  color: var(--tc) !important;
   font-weight: bold;
   font-size: 18px;
-  opacity: 1;
+  opacity: var(--he);
 }
 
 #board .board-notif li .thumb,
@@ -116,7 +154,7 @@ body {
   transition: 0.1s;
   /*stremio's browser doesn't supports curved outlines :(
   /*outline: 2px solid #fff0;*/
-  box-shadow: 0 0 0 2px #fff0, 0 0 0 0 0 #fff0;
+  box-shadow: 0 0 3px 1px #000a;
 }
 
 #board .notif:hover .thumb:after,
@@ -165,6 +203,41 @@ body {
   overflow: visible;
 }
 
+.items .resume-container .resume-in-circle {
+  background-color: var(--cb);
+}
+
+.items .resume-container .resume-button .round-progress-wrapper svg path {
+  stroke: var(--c4) !important;
+}
+
+#discover .holder .items li .icon-ic_play {
+  background-color: var(--c2);
+}
+
+.info-box .controls a .icon,
+#series-calendar ul.month li.day.today .date {
+  background-color: var(--c3);
+}
+
+#series-calendar ul.month li.day {
+  background-color: var(--01dp);
+}
+
+#series-calendar ul.month li.day:hover {
+  background-color: var(--12dp);
+}
+
+#series-calendar ul.month li.day.selected {
+  box-shadow: 0 0 0 2px var(--c3);
+  background-color: var(--24dp);
+}
+
+#series-calendar ul.month li.day .date,
+#series-calendar ul.days li.label {
+  color: var(--c2);
+}
+
 #board .board-item .info {
   display: none;
 }
@@ -198,6 +271,28 @@ li,
 #detail .sidebar {
   top: 0;
   right: var(--nw);
+}
+
+.sidebar .episodes-list li {
+  opacity: var(--he);
+}
+
+.sidebar .episodes-list li.playing,
+.sidebar .season-chooser ul li.selected {
+  background-color: var(--c4);
+  opacity: var(--he);
+}
+
+.sidebar .episodes-list li.unavailable {
+  opacity: var(--le);
+}
+
+.sidebar .episodes-list li:not(.ads):hover {
+  background-color: var(--c7) !important;
+}
+
+.sidebar .episodes-list li.watched:after {
+  background-image: url('/theme_img/watched.png');
 }
 
 #detail .cover,
@@ -234,6 +329,7 @@ li,
 .streams-quality {
   margin: 0 5px 5px 5px;
   max-width: 145px;
+  text-overflow: ellipsis;
 }
 
 .streams-inline {
@@ -293,11 +389,7 @@ li,
 
 #detail .details-bottom .title-content.genre {
   font-size: 14px;
-  opacity: 0.6;
-}
-
-#detail .details-bottom .title-content.genre a:after {
-  opacity: 0.8;
+  opacity: var(--me);
 }
 
 .details-more,
@@ -339,7 +431,8 @@ li,
 #discover .filter .type li,
 #discover .filter .sort li,
 #discover .genre-select li {
-  color: white;
+  color: var(--tc);
+  font-weight: normal;
 }
 
 #discover .filter .type li:hover,
@@ -363,13 +456,13 @@ li,
 body #search-bar input {
   background-color: var(--fgc);
   border-radius: var(--br);
-  color: white !important;
-  box-shadow: 0 0 5px var(--fgc);
+  color: var(--tc) !important;
+  box-shadow: 0 0 3px 1px #000a;
 }
 
 ::placeholder {
-  color: white;
-  opacity: 0.6;
+  color: var(--tc);
+  opacity: var(--le);
 }
 
 /* i don't like that it shows my email lol*/
@@ -382,11 +475,11 @@ body #search-bar input {
 }
 
 #window-controls:not(.player) #user-panel .section .option:hover {
-  background-color: var(--soc);
+  background-color: var(--c3);
 }
 
 #window-controls:not(.player) #user-panel .section .option .icon {
-  color: white;
+  color: var(--tc);
 }
 
 #window-controls:not(.player) #user-panel {
@@ -395,11 +488,6 @@ body #search-bar input {
   left: var(--nw);
   bottom: 0;
   z-index: 1;
-}
-
-html,
-#body {
-  background: var(--bgc) !important;
 }
 
 #header {
@@ -535,7 +623,7 @@ body #search-bar button,
 #library .sort-filter li,
 #addonsCatalog .filter .type li,
 .settings-container .sections a {
-  opacity: 0.6;
+  opacity: var(--le);
 }
 
 body #header .tab .icon:hover,
@@ -558,7 +646,7 @@ body #search-bar:focus button,
 #library .sort-filter li:focus,
 #addonsCatalog .filter .type li:focus,
 .settings-container .sections a:focus {
-  opacity: 0.8 !important;
+  opacity: var(--me) !important;
 }
 
 body #header .tab.selected .icon,
@@ -570,7 +658,7 @@ body #header .tab.selected .icon,
 #library .sort-filter li.selected,
 #addonsCatalog .filter .type li.selected,
 .settings-container .sections a.active {
-  opacity: 1 !important;
+  opacity: var(--he) !important;
 }
 
 #board .board-row {
