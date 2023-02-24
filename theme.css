@@ -2,7 +2,6 @@
   --nw: 100px;
   --nis: 50px;
   --bgc: #121212; /*if you want pure black edit here*/
-  --fgc: #1e1e1e;
   --br: 0.3em;
   --tc: white;
   --he: 0.87;
@@ -60,11 +59,11 @@ h2,
 }
 
 body {
-  scrollbar-color: rgba(255, 255, 255, 0.3) var(--fgc);
+  scrollbar-color: rgba(255, 255, 255, 0.3) var(--02dp);
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--fgc);
+  background: var(--02dp);
   border-radius: var(--br);
 }
 
@@ -454,7 +453,7 @@ li,
 
 #window-controls:not(.player) #user-panel,
 body #search-bar input {
-  background-color: var(--fgc);
+  background-color: var(--02dp);
   border-radius: var(--br);
   color: var(--tc) !important;
   box-shadow: 0 0 3px 1px #000a;
