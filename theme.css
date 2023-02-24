@@ -7,6 +7,11 @@
   --br: 0.3em;
 }
 
+/*i'm disabling the toasts because of that annoying error that appears every time you play something here, it's annoying*/
+#toast-container {
+  display: none;
+}
+
 body,
 #board .board-headline,
 h2,
@@ -61,45 +66,66 @@ body {
 #discover .holder .items li,
 #discover .genre-select li,
 .info-box .overlay,
-#detail .holder .actionButtons .button-b,
-/*don't know if i should it for them or if it loses too much functionality*/
+#detail .holder .actionButtons .button-b {
+  border: none;
+  outline: none !important;
+}
+
+#discover .filter .type li,
+#discover .filter .sort li,
+#library .lib-type li,
+#calendar li,
+#calendar #future-episodes .episode,
+.sidebar .episodes-list li:not(.ads) {
+  transition: 0.1s;
+}
+
 #discover .filter .type li:focus,
 #discover .filter .sort li:focus,
 #library .lib-type li:focus,
 #calendar li:focus,
 #calendar #future-episodes .episode:focus,
 .sidebar .episodes-list li:not(.ads):focus {
-  border: none;
   outline: none !important;
+  box-shadow: inset 0 0 0 2px white;
 }
 
-#board .notif .thumb img,
-#board .board-item .thumb img,
-#board .recent-board .resume .thumb > img,
-#library .items .ng-scope .thumb > img,
-#discover .holder .item .thumb > img {
+#board .notif .thumb:after,
+#board .board-item .thumb:after,
+#board .recent-board .resume .thumb:after,
+#library .items .ng-scope .thumb:after,
+#discover .holder .item .thumb:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br);
+
   transition: 0.1s;
   /*stremio's browser doesn't supports curved outlines :(
   /*outline: 2px solid #fff0;*/
-  box-shadow: 0 0 0 2px #fff0;
+  box-shadow: 0 0 0 2px #fff0, 0 0 0 0 0 #fff0;
 }
 
-#board .notif:hover .thumb img,
-#board .board-item:hover .thumb img,
-#board .recent-board .resume:hover .thumb > img,
-#library .items .ng-scope:hover .thumb > img,
-#discover .holder .item:hover .thumb > img {
+#board .notif:hover .thumb:after,
+#board .board-item:hover .thumb:after,
+#board .recent-board .resume:hover .thumb:after,
+#library .items .ng-scope:hover .thumb:after,
+#discover .holder .item:hover .thumb:after {
   /*outline: 2px solid white;*/
-  box-shadow: 0 0 0 2px white;
+  box-shadow: 0 0 0 2px white, inset 0 0 3px 0 #000a;
 }
 
-#board .notif:focus .thumb img,
-#board .board-item:focus .thumb img,
-#board .recent-board .resume:focus .thumb > img,
-#library .items .ng-scope:focus .thumb > img,
-#discover .holder .item:focus .thumb > img {
+#board .notif:focus .thumb:after,
+#board .board-item:focus .thumb:after,
+#board .recent-board .resume:focus .thumb:after,
+#library .items .ng-scope:focus .thumb:after,
+#discover .holder .item:focus .thumb:after {
   /*outline: 3px solid white;*/
-  box-shadow: 0 0 0 3px white;
+  box-shadow: 0 0 0 3px white, inset 0 0 3px 0 #000a;
 }
 
 @media all {
@@ -157,26 +183,81 @@ body {
 .streams-holder,
 .sidebar .episodes-list li,
 .sidebar .season-chooser li,
-li {
+li,
+#detail .addons-catalogue-link a {
   border-radius: var(--br);
 }
 
-/*
-/* who uses it? screen space waster
-#detail .holder .share {
+#detail .sidebar {
+  top: 0;
+  right: var(--nw);
+}
+
+#detail .cover,
+#detail .cover-overlay,
+#detail .loader {
+  position: fixed;
+  left: 0;
+}
+
+#detail .details-less-info {
+  top: 0;
+}
+
+.streams-holder,
+.streams-play {
+  height: 86px;
+}
+
+.streams-play img {
+  position: relative;
+  top: 15px;
+}
+
+.streams-name {
+  height: 16px;
+  width: 145px;
+  margin: 5px 5px 0px;
+}
+
+.resume-stream {
+  top: 21px;
+}
+
+.streams-quality {
+  margin: 0 5px 5px 5px;
+  max-width: 145px;
+}
+
+.streams-inline {
+  width: 240px;
+}
+
+.streams-list {
+  width: 235px;
+}
+
+.streams-container {
+  max-width: 150px;
+}
+
+.streams-eptitle.shown {
   display: none;
 }
+
+#detail .addons-catalogue-link a {
+  font-size: 14px;
+}
+
+/* here's my tentative at showing the description without having to click anything. you may find that it looks kind of weird because it always is on the same position, but it's the only way i found with just css and being a little dum dum*/
 
 #detail .details,
 #detail .details-movie,
 #detail .details .title,
 #detail .details-movie .title,
-#detail .details-bottom ul li {
+#detail .details-bottom ul li,
+.details-summary p.episode-desc {
   font-size: 16px;
-}
-
-#detail .details-bottom {
-  margin-bottom: 0;
 }
 
 #detail .details-bottom .title {
@@ -194,13 +275,9 @@ li {
   margin-left: 80px;
 }
 
-#detail .details-bottom div {
+#detail .details-bottom div:not(.genre) {
   height: 16px;
-}
-
-#detail .details-bottom .genre, #detail .details-bottom > ul {
-  position: relative;
-  bottom: 200px
+  overflow: visible;
 }
 
 #detail .details-bottom .title-content.genre {
@@ -212,15 +289,27 @@ li {
   opacity: 0.8;
 }
 
-.details-more {
+.details-more,
+.details-summary .title {
   display: none;
 }
 
-.details-more-info {
-    bottom: 100px;
-    opacity: 1;
+#detail .details-bottom {
+  margin-bottom: 0;
+  bottom: 9em;
 }
-*/
+
+.details-more-info {
+  bottom: 0;
+  opacity: 1;
+}
+
+.details-summary p.episode-desc {
+  height: 96px;
+}
+
+/**/
+
 #discover .filter .type li.selected,
 #discover .filter .sort li.selected,
 #library .lib-type li.selected,
@@ -444,26 +533,6 @@ body #search-bar button,
 #library .lib-type li,
 #library .sort-filter li {
   opacity: 0.6;
-}
-
-#detail .sidebar {
-  top: 0;
-  right: var(--nw);
-}
-
-.sidebar .episodes {
-  width: 300px;
-}
-
-#detail .cover,
-#detail .cover-overlay,
-#detail .loader {
-  position: fixed;
-  left: 0;
-}
-
-#detail .details-less-info {
-  top: 0;
 }
 
 #board .board-row {
