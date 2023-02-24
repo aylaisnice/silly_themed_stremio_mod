@@ -38,6 +38,9 @@ body {
 /*#board .board-container-wrapper {
     padding-top: calc(50vh - 125px);
 }*/
+#board .board-container-wrapper {
+  right: 0;
+}
 #board .board-container-wrapper,
 #discover .holder {
   top: 0;
@@ -66,13 +69,13 @@ body {
 #discover .holder .items li,
 #discover .genre-select li,
 .info-box .overlay,
-#detail .holder .actionButtons .button-b {
+#detail .holder .actionButtons .button-b,
+#discover .filter .type li:focus,
+#discover .filter .sort li:focus {
   border: none;
   outline: none !important;
 }
 
-#discover .filter .type li,
-#discover .filter .sort li,
 #library .lib-type li,
 #calendar li,
 #calendar #future-episodes .episode,
@@ -80,8 +83,6 @@ body {
   transition: 0.1s;
 }
 
-#discover .filter .type li:focus,
-#discover .filter .sort li:focus,
 #library .lib-type li:focus,
 #calendar li:focus,
 #calendar #future-episodes .episode:focus,
@@ -337,6 +338,10 @@ li,
   background-color: #0000;
 }
 
+#discover-filter::-webkit-scrollbar {
+  width: 4px;
+}
+
 #window-controls:not(.player) #user-panel,
 body #search-bar input {
   background-color: var(--fgc);
@@ -520,7 +525,15 @@ body #search-bar:hover button,
 #discover .filter .sort li:hover,
 #discover .genre-select li:hover,
 #library .lib-type li:hover,
-#library .sort-filter li:hover {
+#library .sort-filter li:hover,
+body #header .tab .icon:focus,
+#window-controls:not(.player) li .icon:focus,
+body #search-bar:focus button,
+#discover .filter .type li:focus,
+#discover .filter .sort li:focus,
+#discover .genre-select li:focus,
+#library .lib-type li:focus,
+#library .sort-filter li:focus {
   opacity: 0.8 !important;
 }
 
