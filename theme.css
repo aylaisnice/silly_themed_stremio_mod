@@ -32,15 +32,24 @@
   --16dp: #353535;
   --24dp: #383838;
 
-  --shadow1: 0 0 3px 0 #000000aa;
+  --shadow1: 0 0 3px 0.5px #000000aa;
   --shadow2: 0 0 3px 1px #000000aa;
   --shadow3: 0 0 6px 2px #000000aa;
+
+  --res: 4px;
+  --rs: 8px;
+  --rm: 12px;
+  --rl: 16px;
+  --rel: 28px;
+  --rf: 40px;
 }
 
 /*i'm disabling the toasts because of that annoying error that appears every time you play something here, it's annoying*/
 #toast-container {
   display: none;
 }
+
+/* general */
 
 html {
   background: var(--00dp) !important; /*if you want pure black edit here*/
@@ -50,10 +59,14 @@ html {
   background: #0000;
 }
 
-/*
+#header {
+  height: 100vh !important;
+  width: var(--nw) !important;
+  background: #0000 !important;
+  padding-top: calc(50vh - var(--nis) * 3);
+}
+
 #body > .ng-scope:not(.ng-hide):before {
-  /* weird but works!! /
-  background: var(--01dp);
   content: '';
   height: 100vh;
   width: var(--nw);
@@ -61,8 +74,9 @@ html {
   position: fixed;
   top: 0;
   left: 0;
+  background: var(--03dp);
   box-shadow: var(--shadow2);
-}*/
+}
 
 body,
 #board .board-headline,
@@ -70,7 +84,9 @@ h2,
 #detail .holder .actionButtons .button-b .icon,
 #detail .details .title,
 #detail .details-movie .title,
-.items .notification a {
+.items .notification a,
+input,
+::placeholder {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif !important;
 }
 
@@ -96,13 +112,6 @@ body {
   left: var(--nw);
   bottom: 0;
   z-index: 1;
-}
-
-#header {
-  height: 100vh !important;
-  width: var(--nw) !important;
-  background: #0000 !important;
-  padding-top: calc(50vh - var(--nis) * 3);
 }
 
 #window-controls:not(.player) {
@@ -195,51 +204,145 @@ body #search-bar:hover .icon-ic_x {
   visibility: visible;
 }
 
-body #header .tab .icon.icon-ic_back_ios {
-  height: 36px !important;
-  padding-block: calc((var(--nis) - 36px) / 2 + var(--nis) * 2);
-  font-size: 36px !important;
+.settings-container .sections {
+  background-color: var(--bgc);
 }
 
 ::-webkit-scrollbar-track {
   background: var(--02dp);
-  border-radius: var(--br);
+  border-radius: var(--rs);
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: var(--br);
+  border-radius: var(--rs);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.6);
 }
 
-/*#board .board-container-wrapper {
-    padding-top: calc(50vh - 125px);
-}*/
-#board .board-container-wrapper {
-  right: 0;
-  padding-right: 10px;
-}
-#board .board-container-wrapper,
-#discover .holder {
-  top: 0;
-  bottom: 0;
+body #header .tab .icon.icon-ic_back_ios {
+  height: 36px !important;
+  padding-block: calc((var(--nis) - 36px) / 2 + var(--nis) * 2);
+  font-size: 36px !important;
 }
 
-.settings-container .sections {
-  background-color: var(--bgc);
-}
-
-#board .board-headline {
-  color: var(--tc) !important;
+#discover .filter .type li.selected,
+#discover .filter .sort li.selected,
+#library .lib-type li.selected,
+#discover .genre-select li.selected,
+#series-calendar .selectMonth ul li.current,
+#addonsCatalog .filter .type li.selected,
+.settings-container .sections a.active {
+  background-color: #0000;
   font-weight: bold;
-  font-size: 18px;
-  opacity: var(--he);
-  margin-bottom: 7px;
-  margin-top: 5px !important;
-  line-height: 40px !important;
+}
+
+#discover .filter .type li,
+#discover .filter .sort li,
+#discover .genre-select li {
+  color: var(--tc);
+  font-weight: normal;
+}
+
+#discover .filter .type li:hover,
+#discover .filter .sort li:hover,
+#discover .genre-select li:hover,
+#library .lib-type li:hover,
+#library .sort-filter li:hover,
+#addonsCatalog .filter .type li:hover {
+  background-color: #0000;
+}
+
+#window-controls:not(.player) #user-panel,
+body #search-bar input {
+  background-color: var(--12dp);
+  border-radius: var(--rm);
+  color: var(--tc) !important;
+  box-shadow: var(--shadow3);
+}
+
+::placeholder {
+  color: var(--tc);
+  opacity: var(--le);
+}
+
+/* i don't like that it shows my email lol*/
+#window-controls #user-panel .user-info .email-container .email {
+  display: none;
+}
+
+.tab .ng-scope.ng-binding,
+.addons-handle,
+.board-row-icon.icon {
+  display: none;
+}
+
+body #header .tab,
+#window-controls:not(.player) li {
+  background-color: #0000 !important;
+}
+
+body #header .tab .notif,
+body .player-handle .tab .notif,
+body .addons-handle .tab .notif {
+  background-color: #0000;
+  opacity: 1 !important;
+  border-radius: 0;
+  padding-inline: 0;
+}
+
+body #header .tab .icon,
+#window-controls:not(.player) li .icon,
+body #search-bar button,
+#discover .filter .type li,
+#discover .filter .sort li,
+#discover .genre-select li,
+#library .lib-type li,
+#library .sort-filter li,
+#addonsCatalog .filter .type li,
+.settings-container .sections a {
+  opacity: var(--le);
+}
+
+body #header .tab .icon:hover,
+#window-controls:not(.player) li .icon:hover,
+body #search-bar:hover button,
+#discover .filter .type li:hover,
+#discover .filter .sort li:hover,
+#discover .genre-select li:hover,
+#library .lib-type li:hover,
+#library .sort-filter li:hover,
+#addonsCatalog .filter .type li:hover,
+.settings-container .sections a:hover,
+body #header .tab .icon:focus,
+#window-controls:not(.player) li .icon:focus,
+body #search-bar:focus button,
+#discover .filter .type li:focus,
+#discover .filter .sort li:focus,
+#discover .genre-select li:focus,
+#library .lib-type li:focus,
+#library .sort-filter li:focus,
+#addonsCatalog .filter .type li:focus,
+.settings-container .sections a:focus {
+  opacity: var(--me) !important;
+}
+
+body #header .tab.selected .icon,
+#window-controls:not(.player) li.selected .icon,
+#discover .filter .type li.selected,
+#discover .filter .sort li.selected,
+#discover .genre-select li.selected,
+#library .lib-type li.selected,
+#library .sort-filter li.selected,
+#addonsCatalog .filter .type li.selected,
+.settings-container .sections a.active {
+  opacity: var(--he) !important;
+}
+
+body .player-handle .tab .icon {
+  right: 100px !important;
 }
 
 #board .board-notif li .thumb,
@@ -299,12 +402,37 @@ body #header .tab .icon.icon-ic_back_ios {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: var(--br);
+  border-radius: var(--rm);
 
   transition: 0.1s;
   /*stremio's browser doesn't supports curved outlines :(
   /*outline: 2px solid #fff0;*/
   box-shadow: var(--shadow2);
+}
+
+/* main page */
+
+/*#board .board-container-wrapper {
+    padding-top: calc(50vh - 125px);
+}*/
+#board .board-container-wrapper {
+  right: 0;
+  padding-right: 10px;
+}
+#board .board-container-wrapper,
+#discover .holder {
+  top: 0;
+  bottom: 0;
+}
+
+#board .board-headline {
+  color: var(--tc) !important;
+  font-weight: bold;
+  font-size: 18px;
+  opacity: var(--he);
+  margin-bottom: 7px;
+  margin-top: 5px !important;
+  line-height: 40px !important;
 }
 
 .items .resumer {
@@ -388,29 +516,6 @@ body #header .tab .icon.icon-ic_back_ios {
   background-color: var(--c2);
 }
 
-.info-box .controls a .icon,
-#series-calendar ul.month li.day.today .date {
-  background-color: var(--c3);
-}
-
-#series-calendar ul.month li.day {
-  background-color: var(--01dp);
-}
-
-#series-calendar ul.month li.day:hover {
-  background-color: var(--12dp);
-}
-
-#series-calendar ul.month li.day.selected {
-  box-shadow: 0 0 0 2px var(--c3);
-  background-color: var(--24dp);
-}
-
-#series-calendar ul.month li.day .date,
-#series-calendar ul.days li.label {
-  color: var(--c2);
-}
-
 #board .board-item .info {
   display: none;
 }
@@ -429,16 +534,20 @@ body #header .tab .icon.icon-ic_back_ios {
 }
 
 .thumb img,
-.info-box,
-#detail .holder .actionButtons .button-b,
+.info-box {
+  border-radius: var(--rm);
+}
+#detail .addons-catalogue-link a,
+#detail .holder .actionButtons .button-b {
+  border-radius: var(--rs);
+}
 .streams-holder,
 .sidebar .episodes-list li,
 .sidebar .season-chooser li,
 li,
-#detail .addons-catalogue-link a,
 .button-b,
 .button-s {
-  border-radius: var(--br);
+  border-radius: var(--res);
 }
 
 #detail .sidebar {
@@ -446,7 +555,86 @@ li,
   right: var(--nw);
 }
 
+.items .notification {
+  background: rgba(202, 149, 208, var(--he));
+  color: white;
+  border-radius: 0 0 var(--rm) var(--rm);
+}
+
+.items .notification.bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.items .notification .ng-scope.ng-binding {
+  font-weight: bold;
+}
+
+#board .board-row {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#board .hidden-button {
+  visibility: hidden;
+  display: block !important;
+  transition: 0.1s;
+}
+
+#board .carousel-right {
+  background: linear-gradient(to right, #12121200 0%, var(--00dp) 70%, var(--00dp) 100%);
+}
+
+#board .carousel-left {
+  background: linear-gradient(to right, var(--00dp) 0%, var(--00dp) 30%, #12121200 100%);
+}
+
+#board .arrow-center {
+  top: calc(50% - 32px);
+}
+
+body #header .tab {
+  padding: 0 !important;
+}
+
+/* calendar */
+
+.info-box .controls a .icon,
+#series-calendar ul.month li.day.today .date {
+  background-color: var(--c3);
+}
+
+#series-calendar ul.month li.day {
+  background-color: var(--01dp);
+}
+
+#series-calendar ul.month li.day:hover {
+  background-color: var(--04dp);
+}
+
+#series-calendar ul.month li.day.selected {
+  box-shadow: 0 0 0 2px var(--c3);
+  background-color: var(--08dp);
+}
+
+#series-calendar ul.month li.day .date,
+#series-calendar ul.days li.label {
+  color: var(--c2);
+}
+
+#series-calendar {
+  font-weight: normal;
+}
+
+/* inside a show/movie */
+
 .sidebar .episodes-list li {
+  opacity: var(--he);
+}
+
+.sidebar .season-chooser ul li:hover {
+  background-color: var(--c7);
   opacity: var(--he);
 }
 
@@ -586,168 +774,12 @@ li,
 
 /**/
 
-#discover .filter .type li.selected,
-#discover .filter .sort li.selected,
-#library .lib-type li.selected,
-#discover .genre-select li.selected,
-#series-calendar .selectMonth ul li.current,
-#addonsCatalog .filter .type li.selected,
-.settings-container .sections a.active {
-  background-color: #0000;
-  font-weight: bold;
-}
-
-#series-calendar {
-  font-weight: normal;
-}
-
-#discover .filter .type li,
-#discover .filter .sort li,
-#discover .genre-select li {
-  color: var(--tc);
-  font-weight: normal;
-}
-
-#discover .filter .type li:hover,
-#discover .filter .sort li:hover,
-#discover .genre-select li:hover,
-#library .lib-type li:hover,
-#library .sort-filter li:hover,
-#addonsCatalog .filter .type li:hover {
-  background-color: #0000;
-}
-
+/* addons */
 #addonsCatalog .filter .type + .type {
   overflow-x: hidden;
 }
 
+/* discover */
 #discover-filter::-webkit-scrollbar {
   width: 4px;
-}
-
-#window-controls:not(.player) #user-panel,
-body #search-bar input {
-  background-color: var(--02dp);
-  border-radius: var(--br);
-  color: var(--tc) !important;
-  box-shadow: var(--shadow3);
-}
-
-::placeholder {
-  color: var(--tc);
-  opacity: var(--le);
-}
-
-/* i don't like that it shows my email lol*/
-#window-controls #user-panel .user-info .email-container .email {
-  display: none;
-}
-
-.tab .ng-scope.ng-binding,
-.addons-handle,
-.board-row-icon.icon {
-  display: none;
-}
-
-body #header .tab,
-#window-controls:not(.player) li {
-  background-color: #0000 !important;
-}
-
-body #header .tab .notif,
-body .player-handle .tab .notif,
-body .addons-handle .tab .notif {
-  background-color: #0000;
-  opacity: 1 !important;
-  border-radius: 0;
-  padding-inline: 0;
-}
-
-body #header .tab .icon,
-#window-controls:not(.player) li .icon,
-body #search-bar button,
-#discover .filter .type li,
-#discover .filter .sort li,
-#discover .genre-select li,
-#library .lib-type li,
-#library .sort-filter li,
-#addonsCatalog .filter .type li,
-.settings-container .sections a {
-  opacity: var(--le);
-}
-
-body #header .tab .icon:hover,
-#window-controls:not(.player) li .icon:hover,
-body #search-bar:hover button,
-#discover .filter .type li:hover,
-#discover .filter .sort li:hover,
-#discover .genre-select li:hover,
-#library .lib-type li:hover,
-#library .sort-filter li:hover,
-#addonsCatalog .filter .type li:hover,
-.settings-container .sections a:hover,
-body #header .tab .icon:focus,
-#window-controls:not(.player) li .icon:focus,
-body #search-bar:focus button,
-#discover .filter .type li:focus,
-#discover .filter .sort li:focus,
-#discover .genre-select li:focus,
-#library .lib-type li:focus,
-#library .sort-filter li:focus,
-#addonsCatalog .filter .type li:focus,
-.settings-container .sections a:focus {
-  opacity: var(--me) !important;
-}
-
-body #header .tab.selected .icon,
-#window-controls:not(.player) li.selected .icon,
-#discover .filter .type li.selected,
-#discover .filter .sort li.selected,
-#discover .genre-select li.selected,
-#library .lib-type li.selected,
-#library .sort-filter li.selected,
-#addonsCatalog .filter .type li.selected,
-.settings-container .sections a.active {
-  opacity: var(--he) !important;
-}
-
-#board .board-row {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-#board .carousel-right {
-  background: linear-gradient(to right, #12121200 0%, var(--00dp) 70%, var(--00dp) 100%);
-}
-
-#board .carousel-left {
-  background: linear-gradient(to right, var(--00dp) 0%, var(--00dp) 30%, #12121200 100%);
-}
-
-#board .arrow-center {
-  top: calc(50% - 32px);
-}
-
-body #header .tab {
-  padding: 0 !important;
-}
-
-body .player-handle .tab .icon {
-  right: 100px !important;
-}
-
-.items .notification {
-  background: rgba(202, 149, 208, var(--he));
-  color: white;
-  border-radius: 0 0 var(--br) var(--br);
-}
-
-.items .notification.bottom {
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.items .notification .ng-scope.ng-binding {
-  font-weight: bold;
 }
