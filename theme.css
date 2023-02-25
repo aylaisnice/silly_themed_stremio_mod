@@ -718,11 +718,11 @@ body #header .tab.selected .icon,
 }
 
 #board .carousel-right {
-  background: linear-gradient(to right, #0000 0%, var(--bgc) 70%, var(--bgc) 100%);
+  background: linear-gradient(to right, #12121200 0%, var(--00dp) 70%, var(--00dp) 100%);
 }
 
 #board .carousel-left {
-  background: linear-gradient(to right, var(--bgc) 0%, var(--bgc) 30%, #07070700 100%);
+  background: linear-gradient(to right, var(--00dp) 0%, var(--00dp) 30%, #12121200 100%);
 }
 
 #board .arrow-center {
