@@ -219,7 +219,6 @@ body #header .tab .icon.icon-ic_back_ios {
     padding-top: calc(50vh - 125px);
 }*/
 #board .board-container-wrapper {
-  padding-top: 28px;
   right: 0;
   padding-right: 10px;
 }
