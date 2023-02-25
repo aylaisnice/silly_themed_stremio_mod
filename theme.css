@@ -1,3 +1,5 @@
+@import url('/theme_assets/Inter.ttf');
+
 :root {
   --nw: 100px;
   --nis: 50px;
@@ -20,21 +22,18 @@
   --c1: #dfbfe2;
   --c0: #f2e5f3;
 
-  --00dp: #121212;
-  --01dp: #1e1e1e;
-  --02dp: #222222;
-  --03dp: #252525;
-  --04dp: #272727;
-  --05dp: #2c2c2c;
-  --06dp: #2e2e2e;
-  --08dp: #2d2d2d;
-  --12dp: #323232;
-  --16dp: #353535;
-  --24dp: #383838;
+  --l0: #121212;
+  --l1: #1e1e1e;
+  --l2: #252525;
+  --l3: #2e2e2e;
+  --l4: #2d2d2d;
+  --l5: #323232;
 
-  --shadow1: 0 0 3px 0.5px #000000aa;
-  --shadow2: 0 0 3px 1px #000000aa;
-  --shadow3: 0 0 6px 2px #000000aa;
+  --s1: 0 0 2px 1px #000000aa;
+  --s2: 0 0 4px 2px #000000aa;
+  --s3: 0 0 6px 3px #000000aa;
+  --s4: 0 0 8px 4px #000000aa;
+  --s5: 0 0 10px 5px #000000aa;
 
   --res: 4px;
   --rs: 8px;
@@ -51,8 +50,13 @@
 
 /* general */
 
+body,
 html {
-  background: var(--00dp) !important; /*if you want pure black edit here*/
+  -webkit-font-smoothing: default !important;
+}
+
+html {
+  background: var(--l0) !important; /*if you want pure black edit here*/
 }
 
 #body {
@@ -74,24 +78,48 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--03dp);
-  box-shadow: var(--shadow2);
+  background: var(--l2);
+  box-shadow: var(--s2);
 }
 
 body,
 #board .board-headline,
+h1,
 h2,
+h3,
+h4,
 #detail .holder .actionButtons .button-b .icon,
 #detail .details .title,
 #detail .details-movie .title,
-.items .notification a,
 input,
-::placeholder {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif !important;
+::placeholder,
+a,
+span,
+p {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif !important;
+}
+
+h1,
+#detail .logo img {
+  font-weight: 900;
 }
 
 body {
-  scrollbar-color: rgba(255, 255, 255, 0.3) var(--02dp);
+  scrollbar-color: rgba(255, 255, 255, 0.3) var(--l1);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--l1);
+  border-radius: var(--rs);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--rs);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
 }
 
 #window-controls:not(.player) #user-panel .section .option {
@@ -124,7 +152,7 @@ body {
 
 #header::before {
   content: '';
-  background: url(theme_img/stremio.png);
+  background: url(/theme_assets/stremio.png);
   width: var(--nis);
   height: var(--nis);
   position: absolute;
@@ -208,20 +236,6 @@ body #search-bar:hover .icon-ic_x {
   background-color: var(--bgc);
 }
 
-::-webkit-scrollbar-track {
-  background: var(--02dp);
-  border-radius: var(--rs);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: var(--rs);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.6);
-}
-
 body #header .tab .icon.icon-ic_back_ios {
   height: 36px !important;
   padding-block: calc((var(--nis) - 36px) / 2 + var(--nis) * 2);
@@ -257,10 +271,15 @@ body #header .tab .icon.icon-ic_back_ios {
 
 #window-controls:not(.player) #user-panel,
 body #search-bar input {
-  background-color: var(--12dp);
+  background-color: var(--l3);
   border-radius: var(--rm);
   color: var(--tc) !important;
-  box-shadow: var(--shadow3);
+  box-shadow: var(--s3);
+}
+
+body #search-bar input:hover {
+  background-color: var(--l5);
+  box-shadow: var(--s5);
 }
 
 ::placeholder {
@@ -337,7 +356,9 @@ body #header .tab.selected .icon,
 #library .lib-type li.selected,
 #library .sort-filter li.selected,
 #addonsCatalog .filter .type li.selected,
-.settings-container .sections a.active {
+.settings-container .sections a.active,
+label,
+li.label {
   opacity: var(--he) !important;
 }
 
@@ -381,6 +402,8 @@ body .player-handle .tab .icon {
   box-shadow: inset 0 0 0 2px white;
 }
 
+/* board items */
+
 #board .notif .thumb:after,
 #board .board-item .thumb:after,
 #board .recent-board .resume .thumb:after,
@@ -405,24 +428,7 @@ body .player-handle .tab .icon {
   border-radius: var(--rm);
 
   transition: 0.1s;
-  /*stremio's browser doesn't supports curved outlines :(
-  /*outline: 2px solid #fff0;*/
-  box-shadow: var(--shadow2);
-}
-
-/* main page */
-
-/*#board .board-container-wrapper {
-    padding-top: calc(50vh - 125px);
-}*/
-#board .board-container-wrapper {
-  right: 0;
-  padding-right: 10px;
-}
-#board .board-container-wrapper,
-#discover .holder {
-  top: 0;
-  bottom: 0;
+  box-shadow: var(--s1);
 }
 
 #board .board-headline {
@@ -447,7 +453,7 @@ body .player-handle .tab .icon {
 #library .items .ng-scope:hover .thumb:after,
 #discover .holder .item:hover .thumb:after {
   /*outline: 2px solid white;*/
-  box-shadow: 0 0 0 2px white, inset var(--shadow1);
+  box-shadow: 0 0 0 2px white, inset var(--s2), var(--s2);
 }
 
 #board .notif:focus .thumb:after,
@@ -456,7 +462,7 @@ body .player-handle .tab .icon {
 #library .items .ng-scope:focus .thumb:after,
 #discover .holder .item:focus .thumb:after {
   /*outline: 3px solid white;*/
-  box-shadow: 0 0 0 3px white, inset var(--shadow1);
+  box-shadow: 0 0 0 3px white, inset var(--s2), var(--s2);
 }
 
 #board li.board-item,
@@ -464,31 +470,19 @@ body .player-handle .tab .icon {
   margin-bottom: 0 !important;
 }
 
-@media all {
-  #board .recent-board li {
-    width: 19% !important;
-    margin: 0.7%;
-  }
+/* main page */
+
+/*#board .board-container-wrapper {
+    padding-top: calc(50vh - 125px);
+}*/
+#board .board-container-wrapper {
+  right: 0;
+  padding-right: 10px;
 }
-@media (min-width: 800px) {
-  #board .recent-board li {
-    width: 18.66% !important;
-  }
-}
-@media (min-width: 900px) {
-  #board .recent-board li {
-    width: 15.66% !important;
-  }
-}
-@media (min-width: 1200px) {
-  #board .recent-board li {
-    width: 13.28% !important;
-  }
-}
-@media (min-width: 1400px) {
-  #board .recent-board li {
-    width: 11.5% !important;
-  }
+#board .board-container-wrapper,
+#discover .holder {
+  top: 0;
+  bottom: 0;
 }
 
 .items.recent-board li,
@@ -498,14 +492,14 @@ body .player-handle .tab .icon {
 }
 
 .items .resume-container .resume-in-circle {
-  background-color: var(--01dp);
-  box-shadow: var(--shadow2);
+  background-color: var(--l1);
+  box-shadow: var(--s2);
   transition: 0.2s ease-in;
 }
 
 .items li:hover .resume-container .resume-in-circle,
 .items li:focus .resume-container .resume-in-circle {
-  box-shadow: var(--shadow3);
+  box-shadow: var(--s5);
 }
 
 .items .resume-container .resume-button .round-progress-wrapper svg path {
@@ -583,11 +577,11 @@ li,
 }
 
 #board .carousel-right {
-  background: linear-gradient(to right, #12121200 0%, var(--00dp) 70%, var(--00dp) 100%);
+  background: linear-gradient(to right, #12121200 0%, var(--l0) 70%, var(--l0) 100%);
 }
 
 #board .carousel-left {
-  background: linear-gradient(to right, var(--00dp) 0%, var(--00dp) 30%, #12121200 100%);
+  background: linear-gradient(to right, var(--l0) 0%, var(--l0) 30%, #12121200 100%);
 }
 
 #board .arrow-center {
@@ -606,16 +600,20 @@ body #header .tab {
 }
 
 #series-calendar ul.month li.day {
-  background-color: var(--01dp);
+  background-color: var(--l1);
 }
 
 #series-calendar ul.month li.day:hover {
-  background-color: var(--04dp);
+  background-color: var(--l4);
 }
 
 #series-calendar ul.month li.day.selected {
   box-shadow: 0 0 0 2px var(--c3);
-  background-color: var(--08dp);
+  background-color: var(--l3);
+}
+
+#series-calendar ul.month li.day.selected:hover {
+  background-color: var(--l5);
 }
 
 #series-calendar ul.month li.day .date,
@@ -653,7 +651,7 @@ body #header .tab {
 }
 
 .sidebar .episodes-list li.watched:after {
-  background-image: url('/theme_img/watched.png');
+  background-image: url('/theme_assets/watched.png');
 }
 
 #detail .cover,
@@ -782,4 +780,67 @@ body #header .tab {
 /* discover */
 #discover-filter::-webkit-scrollbar {
   width: 4px;
+}
+
+#discover .holder .items {
+  margin-left: 0;
+}
+
+/* size variations */
+
+@media all {
+  #discover .holder .items li {
+    width: 23% !important;
+  }
+  #board .recent-board li {
+    width: 19% !important;
+    margin: 0.7%;
+  }
+}
+
+@media (min-width: 800px) {
+  #discover .holder .items li {
+    width: 31.3% !important;
+  }
+  #board .recent-board li {
+    width: 18.66% !important;
+  }
+}
+
+@media (min-width: 900px) {
+  #board .recent-board li {
+    width: 15.66% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  #discover .holder .items li {
+    width: 23% !important;
+  }
+  #board .recent-board li {
+    width: 13.28% !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  #discover .holder .items li {
+    width: 18% !important;
+  }
+  #board .recent-board li {
+    width: 11.5% !important;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #search-bar {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  #search-bar {
+    width: 0 !important;
+    right: 0 !important;
+  }
 }
