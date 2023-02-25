@@ -6,9 +6,9 @@
   --he: 0.87;
   --me: 0.6;
   --le: 0.38;
-
+  
   --co: #8a5aab;
-
+  
   --c9: #4b1c7a;
   --c8: #672588;
   --c7: #762a91;
@@ -19,7 +19,7 @@
   --c2: #ca95d0;
   --c1: #dfbfe2;
   --c0: #f2e5f3;
-
+  
   --00dp: #121212;
   --01dp: #1e1e1e;
   --02dp: #222222;
@@ -31,7 +31,7 @@
   --12dp: #323232;
   --16dp: #353535;
   --24dp: #383838;
-
+  
   --shadow1: 0 0 3px 0 #000000aa;
   --shadow2: 0 0 3px 1px #000000aa;
   --shadow3: 0 0 6px 2px #000000aa;
@@ -39,7 +39,7 @@
 
 /*i'm disabling the toasts because of that annoying error that appears every time you play something here, it's annoying*/
 #toast-container {
-  display: none;
+  display: none
 }
 
 html {
@@ -219,6 +219,7 @@ body #header .tab .icon.icon-ic_back_ios {
     padding-top: calc(50vh - 125px);
 }*/
 #board .board-container-wrapper {
+  padding-top: 28px;
   right: 0;
   padding-right: 10px;
 }
@@ -238,6 +239,8 @@ body #header .tab .icon.icon-ic_back_ios {
   font-size: 18px;
   opacity: var(--he);
   margin-bottom: 7px;
+  margin-top: 5px !important;
+  line-height: 40px !important;
 }
 
 #board .board-notif li .thumb,
@@ -265,7 +268,7 @@ body #header .tab .icon.icon-ic_back_ios {
 #calendar li,
 #calendar #future-episodes .episode,
 .sidebar .episodes-list li:not(.ads) {
-  transition: 0.1s;
+  transition: 0.1s
 }
 
 #library .lib-type li:focus,
@@ -298,11 +301,11 @@ body #header .tab .icon.icon-ic_back_ios {
   top: 0;
   left: 0;
   border-radius: var(--br);
-
+  
   transition: 0.1s;
   /*stremio's browser doesn't supports curved outlines :(
   /*outline: 2px solid #fff0;*/
-  box-shadow: var(--shadow2);
+  box-shadow: var(--shadow2); 
 }
 
 .items .resumer {
@@ -329,10 +332,14 @@ body #header .tab .icon.icon-ic_back_ios {
   box-shadow: 0 0 0 3px white, inset var(--shadow1);
 }
 
+#board li.board-item, #board .recent-board li {
+  margin-bottom: 0 !important;
+}
+
 @media all {
   #board .recent-board li {
     width: 19% !important;
-    margin: 0.7%;
+    margin: .7%;
   }
 }
 @media (min-width: 800px) {
@@ -352,7 +359,7 @@ body #header .tab .icon.icon-ic_back_ios {
 }
 @media (min-width: 1400px) {
   #board .recent-board li {
-    width: 11.5% !important;
+      width: 11.5% !important;
   }
 }
 
@@ -368,8 +375,7 @@ body #header .tab .icon.icon-ic_back_ios {
   transition: 0.2s ease-in;
 }
 
-.items li:hover .resume-container .resume-in-circle,
-.items li:focus .resume-container .resume-in-circle {
+.items li:hover .resume-container .resume-in-circle, .items li:focus .resume-container .resume-in-circle {
   box-shadow: var(--shadow3);
 }
 
@@ -381,10 +387,10 @@ body #header .tab .icon.icon-ic_back_ios {
   background-color: var(--c2);
 }
 
-.info-box .controls a .icon,
-#series-calendar ul.month li.day.today .date {
+.info-box .controls a .icon, #series-calendar ul.month li.day.today .date {
   background-color: var(--c3);
 }
+
 
 #series-calendar ul.month li.day {
   background-color: var(--01dp);
@@ -399,9 +405,8 @@ body #header .tab .icon.icon-ic_back_ios {
   background-color: var(--24dp);
 }
 
-#series-calendar ul.month li.day .date,
-#series-calendar ul.days li.label {
-  color: var(--c2);
+#series-calendar ul.month li.day .date, #series-calendar ul.days li.label {
+  color: var(--c2)
 }
 
 #board .board-item .info {
@@ -429,8 +434,7 @@ body #header .tab .icon.icon-ic_back_ios {
 .sidebar .season-chooser li,
 li,
 #detail .addons-catalogue-link a,
-.button-b,
-.button-s {
+.button-b, .button-s {
   border-radius: var(--br);
 }
 
@@ -440,17 +444,16 @@ li,
 }
 
 .sidebar .episodes-list li {
-  opacity: var(--he);
+  opacity: var(--he)
 }
 
-.sidebar .episodes-list li.playing,
-.sidebar .season-chooser ul li.selected {
+.sidebar .episodes-list li.playing, .sidebar .season-chooser ul li.selected {
   background-color: var(--c4);
-  opacity: var(--he);
+  opacity: var(--he)
 }
 
 .sidebar .episodes-list li.unavailable {
-  opacity: var(--le);
+  opacity: var(--le)
 }
 
 .sidebar .episodes-list li:not(.ads):hover {
@@ -458,7 +461,7 @@ li,
 }
 
 .sidebar .episodes-list li.watched:after {
-  background-image: url('/theme_img/watched.png');
+  background-image: url("/theme_img/watched.png")
 }
 
 #detail .cover,
@@ -472,8 +475,7 @@ li,
   top: 0;
 }
 
-.streams-holder,
-.streams-play {
+.streams-holder, .streams-play {
   height: 86px;
 }
 
@@ -558,8 +560,7 @@ li,
   opacity: var(--me);
 }
 
-.details-more,
-.details-summary .title {
+.details-more, .details-summary .title {
   display: none;
 }
 
@@ -610,7 +611,7 @@ li,
   background-color: #0000;
 }
 
-#addonsCatalog .filter .type + .type {
+#addonsCatalog .filter .type+.type {
   overflow-x: hidden;
 }
 
@@ -679,6 +680,7 @@ body #search-bar:hover button,
 #library .sort-filter li:hover,
 #addonsCatalog .filter .type li:hover,
 .settings-container .sections a:hover,
+
 body #header .tab .icon:focus,
 #window-controls:not(.player) li .icon:focus,
 body #search-bar:focus button,
