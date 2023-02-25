@@ -1,7 +1,6 @@
 :root {
   --nw: 100px;
   --nis: 50px;
-  --bgc: #121212; /*if you want pure black edit here*/
   --br: 0.3em;
   --tc: white;
   --he: 0.87;
@@ -9,8 +8,6 @@
   --le: 0.38;
 
   --co: #8a5aab;
-
-  --cb: #301733;
 
   --c9: #4b1c7a;
   --c8: #672588;
@@ -34,6 +31,10 @@
   --12dp: #323232;
   --16dp: #353535;
   --24dp: #383838;
+
+  --shadow1: 0 0 3px 0 #000000aa;
+  --shadow2: 0 0 3px 1px #000000aa;
+  --shadow3: 0 0 6px 2px #000000aa;
 }
 
 /*i'm disabling the toasts because of that annoying error that appears every time you play something here, it's annoying*/
@@ -42,12 +43,26 @@
 }
 
 html {
-  background: var(--bgc) !important;
+  background: var(--00dp) !important; /*if you want pure black edit here*/
 }
 
 #body {
   background: #0000;
 }
+
+/*
+#body > .ng-scope:not(.ng-hide):before {
+  /* weird but works!! /
+  background: var(--01dp);
+  content: '';
+  height: 100vh;
+  width: var(--nw);
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: var(--shadow2);
+}*/
 
 body,
 #board .board-headline,
@@ -61,6 +76,129 @@ h2,
 
 body {
   scrollbar-color: rgba(255, 255, 255, 0.3) var(--02dp);
+}
+
+#window-controls:not(.player) #user-panel .section .option {
+  transition: 0.1s;
+}
+
+#window-controls:not(.player) #user-panel .section .option:hover {
+  background-color: var(--c3);
+}
+
+#window-controls:not(.player) #user-panel .section .option .icon {
+  color: var(--tc);
+}
+
+#window-controls:not(.player) #user-panel {
+  width: 250px;
+  position: fixed;
+  left: var(--nw);
+  bottom: 0;
+  z-index: 1;
+}
+
+#header {
+  height: 100vh !important;
+  width: var(--nw) !important;
+  background: #0000 !important;
+  padding-top: calc(50vh - var(--nis) * 3);
+}
+
+#window-controls:not(.player) {
+  position: fixed;
+  left: 0;
+  top: unset !important;
+  bottom: calc(var(--nis) / 2) !important;
+  width: 20px;
+}
+
+#header::before {
+  content: '';
+  background: url(theme_img/stremio.png);
+  width: var(--nis);
+  height: var(--nis);
+  position: absolute;
+  background-size: var(--nis);
+  left: calc((var(--nw) - var(--nis)) / 2);
+  top: calc((var(--nw) - var(--nis)) / 2);
+}
+
+#body {
+  width: calc(100vw - var(--nw));
+  left: var(--nw);
+  top: 0;
+}
+
+#window-controls:not(.player) li .icon,
+body #header .tab .icon {
+  text-align: center;
+  margin: 0 !important;
+  padding-block: calc(var(--nis) / 3);
+  width: var(--nw) !important;
+  height: calc(var(--nis) / 3);
+}
+
+body #header .tab {
+  text-align: center;
+}
+
+body #header .tab .icon,
+#window-controls:not(.player) li .icon,
+#window-controls:not(.player) .user-menu .icon-ic_more,
+body #search-bar button {
+  font-size: 18px !important;
+  line-height: 1 !important;
+  transition: 0.3s;
+}
+
+body #header .tab {
+  width: var(--nw) !important;
+  height: var(--nis) !important;
+}
+
+body #search-bar {
+  top: calc(50vh + var(--nw) / 2);
+  left: 0;
+  height: var(--nis);
+  width: var(--nw);
+  background-color: #0000;
+}
+
+body #search-bar .icon-ic_x {
+  left: calc(var(--nw) + 290px);
+  top: 19px;
+  visibility: hidden;
+}
+
+body #search-bar button {
+  right: unset !important;
+  width: var(--nw);
+  background-color: #0000;
+}
+
+body #search-bar input {
+  right: 0;
+  left: var(--nw);
+  visibility: hidden;
+  transition: 0.1s;
+  opacity: 0;
+  width: 300px;
+}
+
+body #search-bar:hover input {
+  opacity: 1;
+  visibility: visible;
+}
+
+body #search-bar:hover .icon-ic_x {
+  visibility: visible;
+}
+
+body #header .tab .icon.icon-ic_back_ios {
+  height: 36px !important;
+  padding-block: calc((var(--nis) - 36px) / 2 + var(--nis) * 2);
+  font-size: 36px !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -143,6 +281,15 @@ body {
 #board .recent-board .resume .thumb:after,
 #library .items .ng-scope .thumb:after,
 #discover .holder .item .thumb:after {
+  z-index: 1;
+}
+
+#board .notif .thumb:after,
+#board .board-item .thumb:after,
+#board .recent-board .resume .thumb:after,
+#library .items .ng-scope .thumb:after,
+#discover .holder .item .thumb:after {
+  z-index: 2;
   content: '';
   display: block;
   width: 100%;
@@ -155,8 +302,14 @@ body {
   transition: 0.1s;
   /*stremio's browser doesn't supports curved outlines :(
   /*outline: 2px solid #fff0;*/
-  box-shadow: 0 0 3px 1px #000a;
+  box-shadow: var(--shadow2);
 }
+
+.items .resumer {
+  z-index: 3;
+}
+
+/* 1, 2, 3*/
 
 #board .notif:hover .thumb:after,
 #board .board-item:hover .thumb:after,
@@ -164,7 +317,7 @@ body {
 #library .items .ng-scope:hover .thumb:after,
 #discover .holder .item:hover .thumb:after {
   /*outline: 2px solid white;*/
-  box-shadow: 0 0 0 2px white, inset 0 0 3px 0 #000a;
+  box-shadow: 0 0 0 2px white, inset var(--shadow1);
 }
 
 #board .notif:focus .thumb:after,
@@ -173,7 +326,7 @@ body {
 #library .items .ng-scope:focus .thumb:after,
 #discover .holder .item:focus .thumb:after {
   /*outline: 3px solid white;*/
-  box-shadow: 0 0 0 3px white, inset 0 0 3px 0 #000a;
+  box-shadow: 0 0 0 3px white, inset var(--shadow1);
 }
 
 @media all {
@@ -210,7 +363,14 @@ body {
 }
 
 .items .resume-container .resume-in-circle {
-  background-color: var(--cb);
+  background-color: var(--01dp);
+  box-shadow: var(--shadow2);
+  transition: 0.2s ease-in;
+}
+
+.items li:hover .resume-container .resume-in-circle,
+.items li:focus .resume-container .resume-in-circle {
+  box-shadow: var(--shadow3);
 }
 
 .items .resume-container .resume-button .round-progress-wrapper svg path {
@@ -463,7 +623,7 @@ body #search-bar input {
   background-color: var(--02dp);
   border-radius: var(--br);
   color: var(--tc) !important;
-  box-shadow: 0 0 3px 1px #000a;
+  box-shadow: var(--shadow3);
 }
 
 ::placeholder {
@@ -474,129 +634,6 @@ body #search-bar input {
 /* i don't like that it shows my email lol*/
 #window-controls #user-panel .user-info .email-container .email {
   display: none;
-}
-
-#window-controls:not(.player) #user-panel .section .option {
-  transition: 0.1s;
-}
-
-#window-controls:not(.player) #user-panel .section .option:hover {
-  background-color: var(--c3);
-}
-
-#window-controls:not(.player) #user-panel .section .option .icon {
-  color: var(--tc);
-}
-
-#window-controls:not(.player) #user-panel {
-  width: 250px;
-  position: fixed;
-  left: var(--nw);
-  bottom: 0;
-  z-index: 1;
-}
-
-#header {
-  height: 100vh !important;
-  width: var(--nw) !important;
-  background: #0000 !important;
-  padding-top: calc(50vh - var(--nis) * 3);
-}
-
-#window-controls:not(.player) {
-  position: fixed;
-  left: 0;
-  top: unset !important;
-  bottom: calc(var(--nis) / 2) !important;
-  width: 20px;
-}
-
-#header::before {
-  content: '';
-  background: url(theme_img/stremio.png);
-  width: var(--nis);
-  height: var(--nis);
-  position: absolute;
-  background-size: var(--nis);
-  left: calc((var(--nw) - var(--nis)) / 2);
-  top: calc((var(--nw) - var(--nis)) / 2);
-}
-
-#body {
-  width: calc(100vw - var(--nw));
-  left: var(--nw);
-  top: 0;
-}
-
-#window-controls:not(.player) li .icon,
-body #header .tab .icon {
-  text-align: center;
-  margin: 0 !important;
-  padding-block: calc(var(--nis) / 3);
-  width: var(--nw) !important;
-  height: calc(var(--nis) / 3);
-}
-
-body #header .tab {
-  text-align: center;
-}
-
-body #header .tab .icon,
-#window-controls:not(.player) li .icon,
-#window-controls:not(.player) .user-menu .icon-ic_more,
-body #search-bar button {
-  font-size: 18px !important;
-  line-height: 1 !important;
-  transition: 0.3s;
-}
-
-body #header .tab {
-  width: var(--nw) !important;
-  height: var(--nis) !important;
-}
-
-body #search-bar {
-  top: calc(50vh + var(--nw) / 2);
-  left: 0;
-  height: var(--nis);
-  width: var(--nw);
-  background-color: #0000;
-}
-
-body #search-bar .icon-ic_x {
-  left: calc(var(--nw) + 290px);
-  top: 19px;
-  visibility: hidden;
-}
-
-body #search-bar button {
-  right: unset !important;
-  width: var(--nw);
-  background-color: #0000;
-}
-
-body #search-bar input {
-  right: 0;
-  left: var(--nw);
-  visibility: hidden;
-  transition: 0.1s;
-  opacity: 0;
-  width: 300px;
-}
-
-body #search-bar:hover input {
-  opacity: 1;
-  visibility: visible;
-}
-
-body #search-bar:hover .icon-ic_x {
-  visibility: visible;
-}
-
-body #header .tab .icon.icon-ic_back_ios {
-  height: 36px !important;
-  padding-block: calc((var(--nis) - 36px) / 2 + var(--nis) * 2);
-  font-size: 36px !important;
 }
 
 .tab .ng-scope.ng-binding,
@@ -693,7 +730,7 @@ body .player-handle .tab .icon {
 }
 
 .items .notification {
-  background: rgba(202, 149, 208, 0.8);
+  background: rgba(202, 149, 208, var(--he));
   color: white;
   border-radius: 0 0 var(--br) var(--br);
 }
