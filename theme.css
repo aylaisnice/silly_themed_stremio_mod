@@ -29,11 +29,12 @@
   --l4: #2d2d2d;
   --l5: #323232;
 
-  --s1: 0 0 2px 1px #000000aa;
-  --s2: 0 0 4px 2px #000000aa;
-  --s3: 0 0 6px 3px #000000aa;
-  --s4: 0 0 8px 4px #000000aa;
-  --s5: 0 0 10px 5px #000000aa;
+  --s0: 0 0 2px 1px #00000090;
+  --s1: 0 1px 2px 1px #00000090;
+  --s2: 0 2px 4px 2px #00000090;
+  --s3: 0 3px 6px 3px #00000090;
+  --s4: 0 4px 8px 4px #00000090;
+  --s5: 0 5px 10px 5px #00000090;
 
   --res: 4px;
   --rs: 8px;
@@ -49,11 +50,6 @@
 }
 
 /* general */
-
-body,
-html {
-  -webkit-font-smoothing: default !important;
-}
 
 html {
   background: var(--l0) !important; /*if you want pure black edit here*/
@@ -150,7 +146,7 @@ body {
   width: 20px;
 }
 
-#header::before {
+#header:before {
   content: '';
   background: url(/theme_assets/stremio.png);
   width: var(--nis);
@@ -271,15 +267,10 @@ body #header .tab .icon.icon-ic_back_ios {
 
 #window-controls:not(.player) #user-panel,
 body #search-bar input {
-  background-color: var(--l3);
+  background-color: var(--l4);
   border-radius: var(--rm);
   color: var(--tc) !important;
-  box-shadow: var(--s3);
-}
-
-body #search-bar input:hover {
-  background-color: var(--l5);
-  box-shadow: var(--s5);
+  box-shadow: var(--s4);
 }
 
 ::placeholder {
@@ -453,7 +444,7 @@ body .player-handle .tab .icon {
 #library .items .ng-scope:hover .thumb:after,
 #discover .holder .item:hover .thumb:after {
   /*outline: 2px solid white;*/
-  box-shadow: 0 0 0 2px white, inset var(--s2), var(--s2);
+  box-shadow: 0 0 0 2px white, inset var(--s0), var(--s2);
 }
 
 #board .notif:focus .thumb:after,
@@ -462,7 +453,7 @@ body .player-handle .tab .icon {
 #library .items .ng-scope:focus .thumb:after,
 #discover .holder .item:focus .thumb:after {
   /*outline: 3px solid white;*/
-  box-shadow: 0 0 0 3px white, inset var(--s2), var(--s2);
+  box-shadow: 0 0 0 3px white, inset var(--s0), var(--s2);
 }
 
 #board li.board-item,
@@ -499,7 +490,7 @@ body .player-handle .tab .icon {
 
 .items li:hover .resume-container .resume-in-circle,
 .items li:focus .resume-container .resume-in-circle {
-  box-shadow: var(--s5);
+  box-shadow: var(--s3);
 }
 
 .items .resume-container .resume-button .round-progress-wrapper svg path {
