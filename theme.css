@@ -427,9 +427,9 @@ body .player-handle .tab .icon {
   font-weight: bold;
   font-size: 18px;
   opacity: var(--he);
-  margin-bottom: -5px;
-  margin-top: 9px !important;
-  line-height: 20px !important;
+  margin-bottom: 7px;
+  margin-top: 5px !important;
+  line-height: 40px !important;
 }
 
 .items .resumer {
